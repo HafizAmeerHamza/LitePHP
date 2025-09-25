@@ -1,0 +1,9 @@
+{
+    "name": "LitePHP/LitePHP",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}

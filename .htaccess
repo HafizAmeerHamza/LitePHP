@@ -1,0 +1,33 @@
+# Disable directory listing
+Options -Indexes
+
+# Set default index page
+DirectoryIndex public/index.php
+
+RewriteEngine On
+
+# ✅ Force HTTPS (must come after RewriteEngine On)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 🔒 Block access to /public/ via URL - MUST BE FIRST
+# Block any URL that contains /public/ in the path
+RewriteCond %{REQUEST_URI} ^/public/ [NC]
+RewriteRule ^ - [F,L]
+
+# 🔒 Prevent access to sensitive directories
+RewriteRule ^(app|config|storage)/ - [F,L]
+
+# ✅ Rewrite asset paths like /assets/... to public/assets/...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/assets/
+RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+
+# ✅ If request is for real file or folder, serve it
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 🔁 Route all other requests to public/index.php
+RewriteRule ^ public/index.php [L]
