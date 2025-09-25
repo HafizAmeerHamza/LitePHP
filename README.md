@@ -15,17 +15,20 @@ It provides a clean and minimal structure for modern PHP applications without re
 If you love Laravel’s structure but need something lightweight and dependency-free, LitePHP gives you the same development flow in plain PHP.
 
 ## 📂 Folder Structure
+
+```bash
 LitePHP/
-│── public/ # Entry point (index.php, assets)
-│── app/
-│ ├── Controllers/
-│ ├── Core/ # contains core functionality of controller, database, route etc
-│ ├── Helpers/ # contains helper functions and classes
-│ ├── Models/
-│── config/ # App configuration
-│── resources/
-│ ├── views/
-│── routes/ # Web and API routes
+├── 📂 public/          # Entry point (index.php, assets)
+├── 📂 app/
+│   ├── 📂 Controllers/  # Application controllers
+│   ├── 📂 Core/         # Core functionality (controller, database, router, etc.)
+│   ├── 📂 Helpers/      # Helper functions and classes
+│   ├── 📂 Models/       # Application models
+├── 📂 config/           # App configuration
+├── 📂 resources/
+│   ├── 📂 views/        # Blade-like views/templates
+├── 📂 routes/           # Web and API routes
+```
 
 
 ## ⚡ Getting Started
